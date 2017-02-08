@@ -40,6 +40,11 @@ sum-up-numbers-general(X, 0) :-
     \+ number(X).
 
 
+% For case when number
+sum-up-numbers-general(X, P) :-
+    number(X),
+    P is X.
+
 % For case when List
 sum-up-numbers-general(L, N) :-
     [F | B] = L,
