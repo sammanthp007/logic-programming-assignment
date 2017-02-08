@@ -104,9 +104,7 @@ get-list-larger-than([], Min, Larger) :-
 
 % case when first is larger
 get-list-larger-than(List, Min, Larger) :-
-    Big-list = []
-    get-list-larger-than-aux(List, Min, [], Big-list),
-    Larger is Big-list.
+    get-list-larger-than-aux(List, Min, [], Larger),
 
 
 % case when first appending
@@ -122,12 +120,14 @@ get-list-larger-than-aux(List, Min, P, Big-list) :-
 % case when first element is not larger
 get-list-larger-than-aux(List, Min, P, Big-list) :-
     [F | T] = List,
+    +\ length(List, 0),
     number(F),
     F > Min,
     get-list-larger-than-aux(T, Min, [F|P], Big-list).
 
 % case when first element is larger
 get-list-larger-than-aux(List, Min, P, Big-list) :-
+    \+ length(List, 0),
     [F | T] = List,
     number(F),
     F <= Min,
@@ -137,7 +137,7 @@ get-list-larger-than-aux(List, Min, P, Big-list) :-
 % case both empty list
 min-above-min([], [], 0).
 
-# case both valid lists
+% case both valid lists
 min-above-min(L1, L2, N) :-
     % get the smallest number in L2
     get-minimum(L2, MinL2),
