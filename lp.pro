@@ -5,3 +5,8 @@ numbers not in nested lists in L. If there are no such numbers, the result is ze
 */
 
 
+sum-up-numbers-simple([], 0).
+
+
+
+
