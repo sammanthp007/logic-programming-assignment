@@ -5,8 +5,13 @@ numbers not in nested lists in L. If there are no such numbers, the result is ze
 */
 
 
-sum-up-numbers-simple([], 0).
+is-head-number(X) :- number(X).
 
+sum-up-numbers-simple([], 0).
+sum-up-numbers-simple([F | L], N) :-
+    is-head-number(F),
+    sum-up-numbers-simple(L, N1),
+    N is F + N1.
 
 
 
