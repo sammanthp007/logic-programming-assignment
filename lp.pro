@@ -17,7 +17,8 @@ get-head-number(X, 0) :-
 
 
 sum-up-numbers-simple([], 0).
-sum-up-numbers-simple([F | L], N) :-
+sum-up-numbers-simple(B, N) :-
+    [F | L] = B,
     get-head-number(F, T),
     sum-up-numbers-simple(L, N1),
     N is T + N1.
@@ -30,3 +31,4 @@ the numbers (including those in nested lists) in L. If there are no such numbers
 zero.
 */
 
+sum-up-numbers-general([], 0).
