@@ -5,22 +5,22 @@ numbers not in nested lists in L. If there are no such numbers, the result is ze
 */
 
 
-get-head-number(X, 0) :- 
+get-first-number(X, 0) :- 
 is_list(X).
 
-get-head-number(X, TOT) :-
+get-first-number(X, TOT) :-
 number(X),
 TOT is X.
 
-get-head-number(X, 0) :-
+get-first-number(X, 0) :-
 \+ number(X).
 
 
 sum-up-numbers-simple([], 0).
-sum-up-numbers-simple(B, N) :-
-    [F | L] = B,
-    get-head-number(F, T),
-    sum-up-numbers-simple(L, N1),
+sum-up-numbers-simple(L, N) :-
+    [F | B] = L,
+    get-first-number(F, T),
+    sum-up-numbers-simple(B, N1),
     N is T + N1.
 
 
