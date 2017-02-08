@@ -142,9 +142,13 @@ min-above-min(L1, L2, N) :-
     N is MinL3.
 
 
+/*
+4. (25 pts) Write a predicate common-unique-elements(L1,L2,N). L1 and L2 are
+both general lists, which may contain nested lists. The predicate is true if N is a simple list (i.e.
+a list without sub-lists) of the items that appear in both L1 and L2 (including the sub-lists
+within). The elements in the result list must be unique.
 
-
-
+*/
 
 
 
