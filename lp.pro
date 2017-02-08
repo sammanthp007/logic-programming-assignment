@@ -104,10 +104,15 @@ min-above-min([], [], 0).
 # case both valid lists
 min-above-min(L1, L2, N) :-
     % get the smallest number in L2
+    get-minimum(L2, MinL2),
 
     % get L3, a list of all num larger than L2 in L1
+    get-list-larger-than(L1, MinL2, LargerL1),
 
     % get the minimum number of L3
+    get-minimum(LargerL1, MinL3),
+
+    N is MinL3.
 
 
 
