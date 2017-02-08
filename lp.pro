@@ -12,6 +12,9 @@ get-head-number(X, TOT) :-
 number(X),
 TOT is X.
 
+get-head-number(X, 0) :-
+\+ number(X).
+
 
 sum-up-numbers-simple([], 0).
 sum-up-numbers-simple([F | L], N) :-
