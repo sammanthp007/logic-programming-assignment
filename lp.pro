@@ -31,4 +31,23 @@ the numbers (including those in nested lists) in L. If there are no such numbers
 zero.
 */
 
+% For base case when empty list
 sum-up-numbers-general([], 0).
+
+% For case when neither list nor number
+sum-up-numbers-general(X, 0) :-
+    \+ is_list(X),
+    \+ number(X).
+
+
+% For case when List
+sum-up-numbers-general(L, N) :-
+    [F | B] = L,
+    sum-up-numbers-general(F, T1),
+    sum-up-numbers-general(B, T2),
+    N is T1 + T2.
+
+
+
+
+
