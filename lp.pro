@@ -62,6 +62,19 @@ numbers in L1 should be used to calculate the minimum. If there is no number in
 L1 larger than the smallest number in L2, the predicate is false
 */
 
+% gets the minimum from a empty list
+get-minimum([Lowest], Lowest).
+
+get-minimum(L, Lowest) :-
+    [T, S | B] = L,
+    number(T),
+    number(S),
+    T =< S,
+    get-minimum([T | B], Lowest.
+
+
+
+
 % case both empty list
 min-above-min([], [], 0).
 
@@ -72,6 +85,7 @@ min-above-min(L1, L2, N) :-
     % get L3, a list of all num larger than L2 in L1
 
     % get the minimum number of L3
+
 
 
 
