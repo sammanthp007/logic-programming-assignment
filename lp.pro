@@ -23,4 +23,10 @@ sum-up-numbers-simple([F | L], N) :-
     N is T + N1.
 
 
+/*
+2. (25 pts) Write a predicate sum-up-numbers-general(L, N). L is a list, which may
+contain as elements numbers and non-numbers. The predicate is true if N is the sum of all
+the numbers (including those in nested lists) in L. If there are no such numbers, the result is
+zero.
+*/
 
