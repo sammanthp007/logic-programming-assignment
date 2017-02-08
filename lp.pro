@@ -62,8 +62,10 @@ numbers in L1 should be used to calculate the minimum. If there is no number in
 L1 larger than the smallest number in L2, the predicate is false
 */
 
-% gets the minimum from a list with one element
-get-minimum([X], Lowest) -:
+% returns false when empty list is provided for get-minimum
+
+% gets the minimum from a list with one element, final case
+get-minimum([X], Lowest) :-
     number(X),
     Lowest is X.
 
@@ -82,7 +84,6 @@ get-minimum(L, Lowest) :-
     number(S),
     T > S,
     get-minimum([S | B], Lowest).
-
 
 % case when first element is not a number
 get-minimum(L, Lowest) :-
