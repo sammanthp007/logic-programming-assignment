@@ -31,16 +31,15 @@ the numbers (including those in nested lists) in L. If there are no such numbers
 zero.
 */
 
-% For base case when empty list
+% For case when empty list
 sum-up-numbers-general([], 0).
 
-% For case when neither list nor number
+% For case when neither list nor number is the lone element
 sum-up-numbers-general(X, 0) :-
     \+ is_list(X),
     \+ number(X).
 
-
-% For case when number
+% For case when number as the only element
 sum-up-numbers-general(X, P) :-
     number(X),
     P is X.
