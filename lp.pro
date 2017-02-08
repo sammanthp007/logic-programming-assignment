@@ -99,39 +99,30 @@ get-minimum(L, Lowest) :-
 
 
 % case when empty list
-get-list-larger-than([], Min, Larger) :- 
-    false.
+get-list-larger-than([],_,[]).
 
-% case when first is larger
-get-list-larger-than(List, Min, Larger) :-
-    get-list-larger-than-aux(List, Min, [], Larger),
+% case when first is large
+get-list-larger-than(L, Min, B):-
+	[F | T] = L,
+    number(F),
+    F > Min,					%if integer greater than N
+	get-list-larger-than(T, Min, A),
+	append([F], A, B).
 
+% case when first is smaller than Min
+get-list-larger-than(L, Min, B):-
+    [F | T] = L,
+    number(F),
+    F =< Min,
+    get-list-larger-than(T, Min,A),
+	append([],A,B).
 
-% case when first appending
-get-list-larger-than-aux(List, Min, P, P) :-
-    length(List, 0).
 
 % case when List item is not number
-get-list-larger-than-aux(List, Min, P, Big-list) :-
+get-list-larger-than-aux(List, Min, Big-list) :-
     [F | T] = List,
     \+ number(F),
-    get-list-larger-than-aux(T, Min, P, Big-list).
-
-% case when first element is not larger
-get-list-larger-than-aux(List, Min, P, Big-list) :-
-    [F | T] = List,
-    +\ length(List, 0),
-    number(F),
-    F > Min,
-    get-list-larger-than-aux(T, Min, [F|P], Big-list).
-
-% case when first element is larger
-get-list-larger-than-aux(List, Min, P, Big-list) :-
-    \+ length(List, 0),
-    [F | T] = List,
-    number(F),
-    F <= Min,
-    get-list-larger-than-aux(T, Min, P, Big-list).
+    get-list-larger-than(T, Min, Big-list).
 
 
 % case both empty list
